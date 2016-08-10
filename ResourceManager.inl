@@ -44,6 +44,11 @@ namespace utils
         _map.clear();
     }
 
+	template<typename RESOURCE, typename IDENTIFIER>
+	wv::ItemManager* ResourceManager<RESOURCE, IDENTIFIER>::makeItemManager() {
+		return new wv::ItemManager(this);
+	}
+
     //sf::Music special case
 
     template<typename IDENTIFIER>

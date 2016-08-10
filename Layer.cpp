@@ -2,7 +2,7 @@
 
 namespace map {
 
-	Layer::Layer(const int l_z, const int l_tileSize)
+	/*Layer::Layer(const int l_z, const int l_tileSize)
 		: VLayer(l_z,l_tileSize) {}
 	Layer::~Layer() {};
 
@@ -37,5 +37,5 @@ namespace map {
 			type->setCoords(coord);
 			type->draw(l_target, l_states);
 		}
-	}
+	}*/
 }

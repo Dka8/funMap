@@ -8,6 +8,10 @@
 #include <SFML/Audio.hpp> //sf::Music
 //#include <SFML-utils/core/Animation.hpp>
 
+namespace wv {
+	class ItemManager;
+}
+
 namespace utils
 {
     template<typename RESOURCE,typename IDENTIFIER = int>
@@ -30,7 +34,8 @@ namespace utils
             RESOURCE& getOrLoad(const IDENTIFIER& id,Args&& ... args);
 
             void clear();
-        
+			
+			wv::ItemManager* makeItemManager();
 
         private:
             std::unordered_map<IDENTIFIER,std::unique_ptr<RESOURCE>> _map;

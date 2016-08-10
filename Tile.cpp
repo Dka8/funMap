@@ -1,8 +1,7 @@
-#include "Tile.h"
 
 namespace map {
 
-	Tile::Tile(float l_scale) {
+	/*Tile::Tile(float l_scale) {
 		m_shape = geometry::HexaIso::getShape();
 
 		m_shape.setOutlineColor(sf::Color(255, 255, 255, 25));
@@ -60,5 +59,5 @@ namespace map {
 
 	void Tile::setTextureRect(const sf::IntRect& l_rect) {
 		m_shape.setTextureRect(l_rect);
-	}
+	}*/
 }

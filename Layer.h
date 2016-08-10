@@ -1,13 +1,12 @@
 #ifndef MAP_LAYER_H
 #define MAP_LAYER_H
 #include "VLayer.h"
-#include "Tile.h"
 #include <list>
 #include <unordered_map>
 
 namespace map {
 	
-	using Vocabulary = std::unordered_map<std::string, Tile*>;
+	/*using Vocabulary = std::unordered_map<std::string, Tile*>;
 	using Object = std::pair<std::string, sf::Vector2i>;
 	using Objects = std::list<Object*>;
 
@@ -27,7 +26,7 @@ namespace map {
 		Vocabulary		m_types;
 		Objects			m_tiles;
 		sf::Texture		m_texture;
-	};
+	};*/
 }
 
 #endif // !MAP_LAYER_H

@@ -1,9 +1,11 @@
-#include "VLayer.h"
-#include "Layer.h"
+//#include "VLayer.h"
+//#include "Layer.h"
 #include <iostream>
 #include <fstream>
 #include "json.hpp"
 #include <vector>
+#include "ItemManager.h"
+#include "Drawable.h"
 
 enum class TileType {
 	Earth = 0, Sand, Rock
@@ -18,19 +20,7 @@ std::string enumToString(int l_i) {
 }
 
 int main() {
-	//srand(time(nullptr));
-
-	/*std::ofstream fout;
-	fout.open("tile.txt");
-
-	for (int y = 1; y < 21; ++y) {
-		for (int x = 1; x < 21; ++x) {
-			fout << "\t\t{ \"type\" :\"" << enumToString(rand() % 1)
-				<< "\",\t\"x\" : " << x << ", \"y\" : " << y << "}," << std::endl;
-		}
-	}
-	fout.close();*/
-
+	
 	nlohmann::json json;
 	std::ifstream fin;
 	fin.open("layer.json");
@@ -39,10 +29,23 @@ int main() {
 	}
 	fin.close();
 
-	map::Layer* layer;
-	layer = new map::Layer(1, 32);
+	//map::Layer* layer;
+	//layer = new map::Layer(1, 32);
 
-	layer->loadFromJson(json);
+	//layer->loadFromJson(json);
+
+	//wv::ItemManager itemManager;
+	utils::ResourceManager<sf::Texture, std::string> textureManager;
+	wv::ItemManager* itemManager = textureManager.makeItemManager();
+	itemManager->setTextureMgr(&textureManager);
+
+	nlohmann::json item;
+	item["name"] = "water";
+	item["texture"] = "tiles.jpg";
+	item["rect"] = { { "x", 0 },{ "y", 0 }, 
+						{ "width", 100 },{ "height", 100 } };
+
+	itemManager->addDrawable(wv::DrawableType::Tile, item);
 
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "Shape");
 
@@ -53,8 +56,11 @@ int main() {
 			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
-		}		
-		layer->draw(window, sf::RenderStates::Default);
+		}
+		//layer->draw(window, sf::RenderStates::Default);
+		auto drawable = itemManager->getDrawable("water");
+		drawable->setCoords(1, 1);
+		window.draw(*drawable);
 		window.display();
 	}
 

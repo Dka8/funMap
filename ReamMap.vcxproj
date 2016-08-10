@@ -125,16 +125,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="HexaIso.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Drawable.h" />
     <ClInclude Include="HexaIso.h" />
     <ClInclude Include="Layer.h" />
-    <ClInclude Include="Tile.h" />
+    <ClInclude Include="ResourceManager.hpp" />
+    <ClInclude Include="ItemManager.h" />
     <ClInclude Include="VLayer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResourceManager.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
