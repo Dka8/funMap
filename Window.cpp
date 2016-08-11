@@ -56,6 +56,11 @@ namespace wv {
 		view.move(l_offset);
 		m_window.setView(view);
 	}
+	void Window::zoomView(const float l_zoom) {
+		sf::View view = m_window.getView();
+		view.zoom(l_zoom);
+		m_window.setView(view);
+	}
 
 	void Window::ToggleFullscreen(EventDetails* l_details) {
 		m_isFullscreen = !m_isFullscreen;

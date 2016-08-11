@@ -37,6 +37,7 @@ namespace wv {
 		
 		void setWindowView(const sf::View& l_view);
 		void moveView(const sf::Vector2f& l_offset);
+		void zoomView(const float l_scale);
 
 	private:
 		void Setup(const std::string& title, const sf::Vector2u& size);

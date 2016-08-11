@@ -4,6 +4,7 @@
 #include <string>
 #include "json.hpp"
 #include "SharedContext.h"
+#include "Map.h"
 
 namespace wv {
 
@@ -22,11 +23,12 @@ namespace wv {
 		//void move(const sf::Vector2i& l_delta);
 		//void zoom(const float l_zoom);
 		//sf::Vector2i getMousePosition() const;
-		//void loadMapFromJson(const nlohmann::json& l_json);
+		void loadMapFromJson(const nlohmann::json& l_json);
 
-		//float			m_zoom;
+		float				m_zoomFactor;
 		sf::Vector2i		m_moveVector;
 		float				m_moveSpeed;
+		wv::Map*			m_map;
 		wv::SharedContext*	m_context;
 	};
 }

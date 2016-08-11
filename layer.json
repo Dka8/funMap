@@ -6,24 +6,33 @@
     [
 		{
 			"name" :	"water",
-			"x" : 		0,
-            "y" : 		0,
-            "width" : 	100,
-            "height" : 	100
+			"rect" :
+			{
+				"x" : 		0,
+				"y" : 		0,
+				"width" : 	100,
+				"height" : 	100
+			}
         },
 		{
 			"name" :	"sand",
-			"x" : 		100,
-            "y" : 		0,
-            "width" : 	100,
-            "height" : 	100
+			"rect" :
+			{
+				"x" : 		100,
+				"y" : 		0,
+				"width" : 	100,
+				"height" : 	100
+			}
         },
 		{
 			"name" :	"grass",
-			"x" : 		200,
-            "y" : 		0,
-            "width" : 	100,
-            "height" : 	100
+			"rect" :
+			{
+				"x" : 		200,
+				"y" : 		0,
+				"width" : 	100,
+				"height" : 	100
+			}
         }
     ],
 	"tiles" :

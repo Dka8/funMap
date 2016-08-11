@@ -131,6 +131,7 @@
     <ClCompile Include="HexaIso.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapViewer.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="HexaIso.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="MapViewer.h" />
     <ClInclude Include="ResourceManager.hpp" />
     <ClInclude Include="ItemManager.h" />
