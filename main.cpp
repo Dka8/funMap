@@ -1,11 +1,6 @@
 //#include "VLayer.h"
 //#include "Layer.h"
-#include <iostream>
-#include <fstream>
-#include "json.hpp"
-#include <vector>
-#include "ItemManager.h"
-#include "Drawable.h"
+#include "Game.h"
 
 enum class TileType {
 	Earth = 0, Sand, Rock
@@ -20,8 +15,15 @@ std::string enumToString(int l_i) {
 }
 
 int main() {
+
+	wv::Game game;
+	while (!game.GetWindow()->IsDone()) {
+		game.Update();
+		game.Render();
+		game.RestartClock();
+	}
 	
-	nlohmann::json json;
+	/*nlohmann::json json;
 	std::ifstream fin;
 	fin.open("layer.json");
 	if (fin.is_open()) {
@@ -29,12 +31,6 @@ int main() {
 	}
 	fin.close();
 
-	//map::Layer* layer;
-	//layer = new map::Layer(1, 32);
-
-	//layer->loadFromJson(json);
-
-	//wv::ItemManager itemManager;
 	utils::ResourceManager<sf::Texture, std::string> textureManager;
 	wv::ItemManager* itemManager = textureManager.makeItemManager();
 	itemManager->setTextureMgr(&textureManager);
@@ -42,8 +38,8 @@ int main() {
 	nlohmann::json item;
 	item["name"] = "water";
 	item["texture"] = "tiles.jpg";
-	item["rect"] = { { "x", 0 },{ "y", 0 }, 
-						{ "width", 100 },{ "height", 100 } };
+	item["rect"] = { { "x", 0 }, { "y", 0 }, 
+						{ "width", 100 }, { "height", 100 } };
 
 	itemManager->addDrawable(wv::DrawableType::Tile, item);
 
@@ -62,7 +58,7 @@ int main() {
 		drawable->setCoords(1, 1);
 		window.draw(*drawable);
 		window.display();
-	}
+	}*/
 
 	return 0;
 }

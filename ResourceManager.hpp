@@ -5,7 +5,9 @@
 #include <string> //string
 #include <memory> //unique_ptr
 
-#include <SFML/Audio.hpp> //sf::Music
+#include <SFML/Audio.hpp>
+#include <SFML\Graphics.hpp>
+//sf::Music
 //#include <SFML-utils/core/Animation.hpp>
 
 namespace wv {

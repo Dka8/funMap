@@ -66,7 +66,9 @@ namespace wv {
 																rect["y"].get<int>(),
 																rect["width"].get<int>(),
 																rect["height"].get<int>()));
-			} catch(...){}
+				std::cout << std::setw(4) << rect << std::endl;
+			}
+			catch (...) {}
 			
 			m_entries.emplace(drawableName, newDrawable);
 			return true;

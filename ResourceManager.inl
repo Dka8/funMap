@@ -1,5 +1,6 @@
 #include <stdexcept> //runtime_error
 #include <utility> //forward
+#include "ItemManager.h"
 
 namespace utils
 {

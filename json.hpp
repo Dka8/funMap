@@ -3621,7 +3621,8 @@ class basic_json
         if (is_object())
         {
             assert(m_value.object != nullptr);
-            assert(m_value.object->find(key) != m_value.object->end());
+            if(m_value.object->find(key) == m_value.object->end())
+				throw std::domain_error("cannot find key");
             return m_value.object->find(key)->second;
         }
         else
