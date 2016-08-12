@@ -44,7 +44,8 @@ namespace wv {
 		std::string objectName = l_json["type"].get<std::string>();
 		sf::Vector2i objectPos = sf::Vector2i(l_json["x"].get<int>(),
 												l_json["y"].get<int>());
-		Object* object = new Object(std::make_pair(objectName, objectPos));
+		wv::Drawable* drawable = m_context->m_itemManager->getDrawable(objectName);
+		Object* object = new Object(std::make_pair(drawable, objectPos));
 		m_objects.push_back(object);
 		if (l_isSort) {
 			//sort();
@@ -52,14 +53,30 @@ namespace wv {
 	}
 
 	void Layer::draw() {
+		sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
+		sf::View windowView = window->getView();
+		//sf::Vector2i windowViewCenter = wv::Drawable::mapPixelToCoords(windowView.getCenter());
+		//sf::Vector2i windowViewSize = wv::Drawable::mapPixelToCoords(windowView.getSize());
+
+
+		sf::FloatRect viewRect = sf::FloatRect(windowView.getCenter().x - windowView.getSize().x / 2.f,
+											windowView.getCenter().y - windowView.getSize().y / 2.f,
+											windowView.getSize().x, windowView.getSize().y);
+		
 		for (auto &object : m_objects) {
-			std::string objectName = object->first;
-			wv::Drawable* drawable = m_context->m_itemManager->getDrawable(objectName);
+			//std::string objectName = object->first;
+			//wv::Drawable* drawable = m_context->m_itemManager->getDrawable(objectName);
 			
 			sf::Vector2i objectCoord = object->second;
-			drawable->setCoords(objectCoord);
-			sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
-			window->draw(*drawable);
+			sf::Vector2f objectPos = wv::Drawable::mapCoordsToPixel(objectCoord);
+			
+			if ((objectPos.x > (viewRect.left - wv::Drawable::getScale())
+				&& objectPos.x < (viewRect.left + viewRect.width + wv::Drawable::getScale()))
+				&& (objectPos.y > (viewRect.top - wv::Drawable::getScale())
+				&& objectPos.y < (viewRect.top + viewRect.height + wv::Drawable::getScale()))) {
+				object->first->setCoords(objectCoord);
+				window->draw(*object->first);
+			}
 		}
 	}
 

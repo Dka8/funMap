@@ -56,8 +56,6 @@ namespace wv {
 	}
 
 	void MapViewer::draw() {
-		//auto drawable = m_context->m_itemManager->getDrawable("water");
-		//m_context->m_window->GetRenderWindow()->draw(*drawable);
 		if (m_map) {
 			m_map->draw();
 		}

@@ -49,9 +49,9 @@ namespace wv {
 }
 
 namespace wv {
-	class Sprite : public Drawable, public sf::Sprite {
+	class Sprite : public Drawable {
 	public:
-		Sprite() : sf::Sprite() {};
+		Sprite() {};
 
 		void setTexture(const sf::Texture* l_texture) {};
 		void setTexture(const sf::Texture& l_texture) {
@@ -75,7 +75,7 @@ namespace wv {
 }
 
 namespace wv {
-	class Tile : public Drawable, public sf::ConvexShape {
+	class Tile : public Drawable {
 	public:
 		Tile() {
 			m_shape = geometry::HexaIso::getShape();

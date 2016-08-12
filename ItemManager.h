@@ -69,7 +69,7 @@ namespace wv {
 				std::cout << std::setw(4) << rect << std::endl;
 			}
 			catch (...) {}
-			
+						
 			m_entries.emplace(drawableName, newDrawable);
 			return true;
 		}

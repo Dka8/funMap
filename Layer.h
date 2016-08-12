@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include "SharedContext.h"
 #include "json.hpp"
+#include "Drawable.h"
 
 namespace wv {
 	
@@ -12,7 +13,7 @@ namespace wv {
 	};
 
 	
-	using Object = std::pair<std::string, sf::Vector2i>;
+	using Object = std::pair<wv::Drawable*, sf::Vector2i>;
 	using Objects = std::list<Object*>;
 
 	class Layer {
