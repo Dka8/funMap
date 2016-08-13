@@ -17,18 +17,20 @@ namespace geometry {
 	using namespace math;
 
 	sf::ConvexShape HexaIso::m_shape;
+	float HexaIso::m_scale = 32.f;
 	HexaIso::__Initiatiser HexaIso::__initiatiser__;
 
 	const sf::ConvexShape& HexaIso::getShape() { return m_shape; }
+	const float HexaIso::getScale() { return m_scale; }
 
-	sf::Vector2f HexaIso::mapCoordsToPixel(int X, int Y, float scale) {
-		return sf::Vector2f((Y*delta_x + X*delta_y) * scale,
-			(Y*delta_y / 2 + X*delta_x / 2)*scale);
+	sf::Vector2f HexaIso::mapCoordsToPixel(int X, int Y) {
+		return sf::Vector2f((Y*delta_x + X*delta_y) * m_scale,
+			(Y*delta_y / 2 + X*delta_x / 2)*m_scale);
 	}
 
-	sf::Vector2i HexaIso::mapPixelToCoords(float X, float Y, float scale) {
-		const float d_x = delta_x * scale;
-		const float d_y = delta_y * scale;
+	sf::Vector2i HexaIso::mapPixelToCoords(float X, float Y) {
+		const float d_x = delta_x * m_scale;
+		const float d_y = delta_y * m_scale;
 
 		const float y = (-X*d_x + 2 * Y*d_y) / (d_y*d_y - d_x*d_x);
 		const float x = -(y*d_x - X) / d_y;
@@ -54,9 +56,9 @@ namespace geometry {
 		return sf::Vector2i(rx, ry);
 	}
 
-	sf::IntRect HexaIso::getTextureRect(int x, int y, float scale) {
-		sf::Vector2f pos = mapCoordsToPixel(x, y, scale);
-		sf::IntRect res(pos.x, pos.y, height * scale, height / 2 * scale);
+	sf::IntRect HexaIso::getTextureRect(int x, int y) {
+		sf::Vector2f pos = mapCoordsToPixel(x, y);
+		sf::IntRect res(pos.x, pos.y, height * m_scale, height / 2 * m_scale);
 		return res;
 	}
 

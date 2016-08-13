@@ -1,6 +1,5 @@
 #include "MapViewer.h"
 #include "Window.h"
-#include "ItemManager.h"
 #include <iostream>
 #include <fstream>
 

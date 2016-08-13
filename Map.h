@@ -8,7 +8,7 @@
 
 namespace wv {
 
-	using Layers = std::map<LayerType, wv::Layer*>;
+	using Layers = std::map<LayerId, wv::Layer*>;
 
 	class Map
 	{

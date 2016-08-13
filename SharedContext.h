@@ -18,7 +18,7 @@ namespace wv {
 		wv::Window*			m_window;
 		wv::MapViewer*		m_mapViewer;
 		utils::ResourceManager<sf::Texture, std::string>* m_textureManager;
-		wv::ItemManager*	m_itemManager;
+		wv::DrawableManager*	m_itemManager;
 	};
 }
 

@@ -1,46 +1,14 @@
 {
-	"content" : "tiles",
-    "z" : 1,
-    "texture" :	"tiles.jpg",
-    "types" :
-    [
+	"layers":
+	[
 		{
-			"name" :	"water",
-			"rect" :
-			{
-				"x" : 		0,
-				"y" : 		0,
-				"width" : 	64,
-				"height" : 	64
-			}
-        },
-		{
-			"name" :	"sand",
-			"rect" :
-			{
-				"x" : 		64,
-				"y" : 		0,
-				"width" : 	64,
-				"height" : 	64
-			}
-        },
-		{
-			"name" :	"grass",
-			"rect" :
-			{
-				"x" : 		128,
-				"y" : 		0,
-				"width" : 	64,
-				"height" : 	64
-			}
-        }
-    ],
-	"tiles" :
-    [
-		{ "type" :"sand",	"x" : 1, "y" : 1},
-		{ "type" :"sand",	"x" : 2, "y" : 1},
-		{ "type" :"sand",	"x" : 3, "y" : 1},
-		{ "type" :"sand",	"x" : 4, "y" : 1},
+			"z" : 1,       
+			"items" :
+			[
+				{ "type" :"sand",	"x" : 1, "y" : 1},
+				{ "type" :"sand",	"x" : 2, "y" : 1},
+				{ "type" :"sand",	"x" : 3, "y" : 1},
+				{ "type" :"sand",	"x" : 4, "y" : 1},
 		{ "type" :"water",	"x" : 5, "y" : 1},
 		{ "type" :"water",	"x" : 6, "y" : 1},
 		{ "type" :"water",	"x" : 7, "y" : 1},
@@ -4105,33 +4073,35 @@
 		{ "type" :"sand",	"x" : 34, "y" : 64},
 		{ "type" :"sand",	"x" : 35, "y" : 64},
 		{ "type" :"sand",	"x" : 36, "y" : 64},
-		{ "type" :"sand",	"x" : 37, "y" : 64},
-		{ "type" :"sand",	"x" : 38, "y" : 64},
-		{ "type" :"sand",	"x" : 39, "y" : 64},
-		{ "type" :"sand",	"x" : 40, "y" : 64},
-		{ "type" :"sand",	"x" : 41, "y" : 64},
-		{ "type" :"sand",	"x" : 42, "y" : 64},
-		{ "type" :"sand",	"x" : 43, "y" : 64},
-		{ "type" :"sand",	"x" : 44, "y" : 64},
-		{ "type" :"sand",	"x" : 45, "y" : 64},
-		{ "type" :"sand",	"x" : 46, "y" : 64},
-		{ "type" :"sand",	"x" : 47, "y" : 64},
-		{ "type" :"sand",	"x" : 48, "y" : 64},
-		{ "type" :"sand",	"x" : 49, "y" : 64},
-		{ "type" :"sand",	"x" : 50, "y" : 64},
-		{ "type" :"sand",	"x" : 51, "y" : 64},
-		{ "type" :"water",	"x" : 52, "y" : 64},
-		{ "type" :"water",	"x" : 53, "y" : 64},
-		{ "type" :"water",	"x" : 54, "y" : 64},
-		{ "type" :"water",	"x" : 55, "y" : 64},
-		{ "type" :"water",	"x" : 56, "y" : 64},
-		{ "type" :"water",	"x" : 57, "y" : 64},
-		{ "type" :"water",	"x" : 58, "y" : 64},
-		{ "type" :"water",	"x" : 59, "y" : 64},
-		{ "type" :"water",	"x" : 60, "y" : 64},
-		{ "type" :"water",	"x" : 61, "y" : 64},
-		{ "type" :"sand",	"x" : 62, "y" : 64},
-		{ "type" :"sand",	"x" : 63, "y" : 64},
-		{ "type" :"sand",	"x" : 64, "y" : 64}
-    ]
+				{ "type" :"sand",	"x" : 37, "y" : 64},
+				{ "type" :"sand",	"x" : 38, "y" : 64},
+				{ "type" :"sand",	"x" : 39, "y" : 64},
+				{ "type" :"sand",	"x" : 40, "y" : 64},
+				{ "type" :"sand",	"x" : 41, "y" : 64},
+				{ "type" :"sand",	"x" : 42, "y" : 64},
+				{ "type" :"sand",	"x" : 43, "y" : 64},
+				{ "type" :"sand",	"x" : 44, "y" : 64},
+				{ "type" :"sand",	"x" : 45, "y" : 64},
+				{ "type" :"sand",	"x" : 46, "y" : 64},
+				{ "type" :"sand",	"x" : 47, "y" : 64},
+				{ "type" :"sand",	"x" : 48, "y" : 64},
+				{ "type" :"sand",	"x" : 49, "y" : 64},
+				{ "type" :"sand",	"x" : 50, "y" : 64},
+				{ "type" :"sand",	"x" : 51, "y" : 64},
+				{ "type" :"water",	"x" : 52, "y" : 64},
+				{ "type" :"water",	"x" : 53, "y" : 64},
+				{ "type" :"water",	"x" : 54, "y" : 64},
+				{ "type" :"water",	"x" : 55, "y" : 64},
+				{ "type" :"water",	"x" : 56, "y" : 64},
+				{ "type" :"water",	"x" : 57, "y" : 64},
+				{ "type" :"water",	"x" : 58, "y" : 64},
+				{ "type" :"water",	"x" : 59, "y" : 64},
+				{ "type" :"water",	"x" : 60, "y" : 64},
+				{ "type" :"water",	"x" : 61, "y" : 64},
+				{ "type" :"sand",	"x" : 62, "y" : 64},
+				{ "type" :"sand",	"x" : 63, "y" : 64},
+				{ "type" :"sand",	"x" : 64, "y" : 64}
+			]
+		}
+	]
 }

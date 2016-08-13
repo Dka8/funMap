@@ -11,7 +11,7 @@
 //#include <SFML-utils/core/Animation.hpp>
 
 namespace wv {
-	class ItemManager;
+	class DrawableManager;
 }
 
 namespace utils
@@ -37,7 +37,7 @@ namespace utils
 
             void clear();
 			
-			wv::ItemManager* makeItemManager();
+			wv::DrawableManager* makeItemManager();
 
         private:
             std::unordered_map<IDENTIFIER,std::unique_ptr<RESOURCE>> _map;

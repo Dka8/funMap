@@ -1,0 +1,32 @@
+{
+	"objects" :
+    [
+		{
+			"type" :	"tile",
+			"name" :	"water",
+			"texture" :	"tiles.jpg",
+			"x" : 		0,
+			"y" : 		0,
+			"width" : 	64,
+			"height" : 	64
+		},
+		{
+			"type" :	"tile",
+			"name" :	"sand",
+			"texture" :	"tiles.jpg",
+			"x" : 		64,
+			"y" : 		0,
+			"width" : 	64,
+			"height" : 	64
+		},
+		{
+			"type" :	"tile",
+			"name" :	"grass",
+			"texture" :	"tiles.jpg",
+			"x" : 		128,
+			"y" : 		0,
+			"width" : 	64,
+			"height" : 	64			
+        }
+    ]
+}

@@ -125,7 +125,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HexaIso.cpp" />
@@ -146,7 +145,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapViewer.h" />
     <ClInclude Include="ResourceManager.hpp" />
-    <ClInclude Include="ItemManager.h" />
+    <ClInclude Include="DrawableManager.h" />
     <ClInclude Include="SharedContext.h" />
     <ClInclude Include="VLayer.h" />
     <ClInclude Include="Window.h" />

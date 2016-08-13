@@ -1,6 +1,6 @@
 #include <stdexcept> //runtime_error
 #include <utility> //forward
-#include "ItemManager.h"
+#include "DrawableManager.h"
 
 namespace utils
 {
@@ -46,8 +46,8 @@ namespace utils
     }
 
 	template<typename RESOURCE, typename IDENTIFIER>
-	wv::ItemManager* ResourceManager<RESOURCE, IDENTIFIER>::makeItemManager() {
-		return new wv::ItemManager(this);
+	wv::DrawableManager* ResourceManager<RESOURCE, IDENTIFIER>::makeItemManager() {
+		return new wv::DrawableManager(this);
 	}
 
     //sf::Music special case

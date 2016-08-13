@@ -8,10 +8,7 @@
 
 namespace wv {
 	
-	enum class LayerType{
-		BackGround = 0, Ground
-	};
-
+	using LayerId = unsigned int short;
 	
 	using Object = std::pair<wv::Drawable*, sf::Vector2i>;
 	using Objects = std::list<Object*>;
@@ -25,17 +22,15 @@ namespace wv {
 		~Layer();
 
 		void loadFromJson(const nlohmann::json& json);
-		void addItem(const nlohmann::json& l_json);
-		void addObject(const nlohmann::json& l_json, bool isSort = false);
+		void addItem(const nlohmann::json& l_json, bool isSort = false);
 		//void sort();
 		void draw();
 
-		LayerType getLayerType();
+		LayerId getLayerId();
 	private:
-		void stringToLayerType(const std::string& l_type);
 		
-		LayerType			m_type;
-		Objects				m_objects;
+		LayerId				m_z;
+		Objects				m_items;
 		wv::SharedContext*	m_context;
 	};
 }
