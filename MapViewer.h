@@ -30,6 +30,7 @@ namespace wv {
 		float				m_moveSpeed;
 		wv::Map*			m_map;
 		wv::SharedContext*	m_context;
+		wv::Drawable*		m_mouse;
 	};
 }
 

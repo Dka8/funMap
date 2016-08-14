@@ -1,5 +1,6 @@
 #include "MapViewer.h"
 #include "Window.h"
+#include <SFML\Graphics.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -10,7 +11,8 @@ namespace wv {
 		m_moveSpeed		(200),
 		m_moveVector	(sf::Vector2i(0,0)),
 		m_zoomFactor	(1),
-		m_map			(nullptr)
+		m_map			(nullptr),
+		m_mouse			(nullptr)
 	{
 		wv::EventManager* event = m_context->m_window->GetEventManager();
 		event->AddCallback("moveLeft", &MapViewer::react, this);
@@ -18,8 +20,16 @@ namespace wv {
 		event->AddCallback("moveUp", &MapViewer::react, this);
 		event->AddCallback("moveDown", &MapViewer::react, this);
 		event->AddCallback("zoom", &MapViewer::react, this);
+		event->AddCallback("tree1", &MapViewer::react, this);
+		event->AddCallback("tree2", &MapViewer::react, this);
+		event->AddCallback("tree3", &MapViewer::react, this);
+		event->AddCallback("tree4", &MapViewer::react, this);
+		event->AddCallback("tree5", &MapViewer::react, this);
+		event->AddCallback("tree6", &MapViewer::react, this);
+		event->AddCallback("empty", &MapViewer::react, this);
 
 		loadMapFromFile("layer.json");
+		m_mouse = m_context->m_itemManager->getDrawable("empty");
 	}
 	MapViewer::~MapViewer(){}
 
@@ -52,12 +62,20 @@ namespace wv {
 			m_context->m_window->zoomView(m_zoomFactor);
 			m_zoomFactor = 1;
 		}
+		sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
+		sf::Vector2i mousePixels = sf::Mouse::getPosition(*m_context->m_window->GetRenderWindow());
+		sf::Vector2f mousePos = window->mapPixelToCoords(mousePixels);
+
+		sf::Vector2i mouseCoords = wv::Drawable::mapPixelToCoords(mousePos);
+		m_mouse->setCoords(mouseCoords);
 	}
 
 	void MapViewer::draw() {
 		if (m_map) {
 			m_map->draw();
 		}
+		sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
+		window->draw(*m_mouse);
 	}
 
 	void MapViewer::react(wv::EventDetails* l_details) {
@@ -76,6 +94,27 @@ namespace wv {
 		}
 		else if (event == "zoom") {
 			m_zoomFactor = 1 - (l_details->m_mouseWheelDelta) / 20.f;
+		}
+		else if (event == "empty") {
+			m_mouse = m_context->m_itemManager->getDrawable("empty");
+		}
+		else if (event == "tree1") {
+			m_mouse = m_context->m_itemManager->getDrawable("tree1");
+		}
+		else if (event == "tree2") {
+			m_mouse = m_context->m_itemManager->getDrawable("tree2");
+		}
+		else if (event == "tree3") {
+			m_mouse = m_context->m_itemManager->getDrawable("tree3");
+		}
+		else if (event == "tree4") {
+			m_mouse = m_context->m_itemManager->getDrawable("tree4");
+		}
+		else if (event == "tree5") {
+			m_mouse = m_context->m_itemManager->getDrawable("tree5");
+		}
+		else if (event == "tree6") {
+			m_mouse = m_context->m_itemManager->getDrawable("tree6");
 		}
 	}
 }

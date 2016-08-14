@@ -11,14 +11,33 @@ namespace wv {
 		//virtual void loadDrawable(const nlohmann::json& l_json,
 		//	utils::ResourceManager<sf::Texture, std::string>* l_textureMgr) = 0;
 		virtual void draw(sf::RenderTarget& l_target, sf::RenderStates l_states) const override = 0;
-		virtual void setTexture(const sf::Texture* l_texture) = 0;
-		virtual void setTextureRect(const sf::IntRect& l_rect) = 0;
+		//virtual void setTexture(const sf::Texture* l_texture) = 0;
+		//virtual void setTextureRect(const sf::IntRect& l_rect) = 0;
 	};
 
 	class Sprite : public wv::DrawableType {
 	public:
 		Sprite(const nlohmann::json& l_json,
-			utils::ResourceManager<sf::Texture, std::string>* l_textureMgr) {};
+			utils::ResourceManager<sf::Texture, std::string>* l_textureMgr) {
+			try
+			{
+				std::string spriteTexture;
+				//tileName = l_json["name"].get<std::string>();
+				spriteTexture = l_json["texture"].get<std::string>();
+				m_sprite.setTexture(l_textureMgr->getOrLoad(spriteTexture, spriteTexture));
+			}
+			catch (...) {}
+			try
+			{
+				sf::IntRect spriteTextureRect;
+				spriteTextureRect = sf::IntRect::Rect(l_json["x"].get<int>(), l_json["y"].get<int>(),
+					l_json["width"].get<int>(), l_json["height"].get<int>());
+				m_sprite.setTextureRect(spriteTextureRect);
+			}
+			catch (...) {}
+			m_sprite.setOrigin(m_sprite.getLocalBounds().width / 2.f, m_sprite.getLocalBounds().height);
+
+		};
 
 		void setTexture(const sf::Texture* l_texture) {};
 		void setTexture(const sf::Texture& l_texture) {
@@ -47,10 +66,10 @@ namespace wv {
 			m_shape.setScale(geometry::HexaIso::getScale(), geometry::HexaIso::getScale());
 			try
 			{
-				std::string tileName, tileTexture;
-				tileName = l_json["name"].get<std::string>();
+				std::string tileTexture;
+				//tileName = l_json["name"].get<std::string>();
 				tileTexture = l_json["texture"].get<std::string>();
-				m_shape.setTexture(&l_textureMgr->getOrLoad(tileName, tileTexture));
+				m_shape.setTexture(&l_textureMgr->getOrLoad(tileTexture, tileTexture));
 			}
 			catch (...) {}
 			try
@@ -77,6 +96,31 @@ namespace wv {
 	private:
 		sf::ConvexShape		m_shape;
 	};
+
+	class Mouse : public wv::DrawableType {
+	public:
+		Mouse(const nlohmann::json& l_json,
+			utils::ResourceManager<sf::Texture, std::string>* l_textureMgr)
+		{
+			m_shape = geometry::HexaIso::getShape();
+			m_shape.setScale(geometry::HexaIso::getScale(), geometry::HexaIso::getScale());
+			try
+			{
+				int alphaChannel = 10;
+				alphaChannel = l_json["alpha"].get<int>();
+				m_shape.setFillColor(sf::Color(0, 0, 0, alphaChannel));
+				
+			}
+			catch (...) {}			
+		};
+
+		void draw(sf::RenderTarget& l_target, sf::RenderStates l_states) const {
+			l_target.draw(m_shape, l_states);
+		};
+
+	private:
+		sf::ConvexShape		m_shape;
+	};
 }
 
 namespace wv {
@@ -92,6 +136,9 @@ namespace wv {
 			}
 			else if (objectType == "sprite") {
 				m_drawable = new Sprite(l_json, l_textureMgr);
+			}
+			else if (objectType == "mouse") {
+				m_drawable = new Mouse(l_json, l_textureMgr);
 			}
 		};
 		virtual ~Drawable() {};
