@@ -30,6 +30,8 @@ namespace wv {
 		void loadFromFile(const std::string& l_file);
 		void loadFromJson(const nlohmann::json& json);
 		void addItem(const nlohmann::json& l_json);
+		wv::Drawable* getItem(const sf::Vector2i& l_pos);
+		wv::Items* getItems();
 		void draw();
 
 	private:

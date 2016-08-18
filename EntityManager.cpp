@@ -5,6 +5,7 @@ EntityManager::EntityManager(wv::SharedContext* l_context) : m_context(l_context
 
 	AddComponentType<C_Drawable>(Component::Drawable);
 	AddComponentType<C_Position>(Component::Position);
+	AddComponentType<C_Plantable>(Component::Plantable);
 
 	loadEntitiesFromFile("entities.json");
 }
@@ -66,7 +67,6 @@ int EntityManager::AddEntity(const std::string &l_entityName){
 			}
 		}
 	}
-	std::cout << "Add new entity:\n" << entityId << "\t" << l_entityName << std::endl;
 	return entityId;
 }
 bool EntityManager::RemoveEntity(const EntityId &l_entity) {
@@ -117,6 +117,17 @@ bool EntityManager::HasComponent(const EntityId &l_entity, const Component &l_co
 	auto itr = m_entities.find(l_entity);
 	if (itr == m_entities.end()) { return false; }
 	return itr->second.first.GetBit((unsigned int)l_component);
+}
+EntityId EntityManager::getEntityByCoords(const sf::Vector2i& l_coords) {
+	for (auto &entity : m_entities) {
+		if (!HasComponent(entity.first, Component::Position)) { continue; }
+		C_Position* position = GetComponent<C_Position>(entity.first, Component::Position);
+		if ((position->getPosition().x == l_coords.x) && (position->getPosition().y == l_coords.y)) {
+			return entity.first;
+		}
+		
+	}
+	return -1;
 }
 //
 //void EntityManager::Purge() {

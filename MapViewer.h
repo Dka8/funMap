@@ -17,6 +17,8 @@ namespace wv {
 		
 		void update(sf::Time l_time);
 		void draw();
+
+		wv::Map*	getMap();
 	private:
 		void react(wv::EventDetails* l_details);
 		//void move(const sf::Vector2i& l_delta);

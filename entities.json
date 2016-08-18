@@ -3,98 +3,86 @@
     [
 		{
 			"name" :	"tree1",
-			"mask" :	"11",
+			"mask" :	"110",
 			"components":
 			[
-				{
-					"id":	0,
-					"drawable":		"tree1"
-				},
-				{
-					"id":	1,
-					"x":	0,
-					"y":	0
-				}			
+				{	"id":	0,	"drawable":	"tree6"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	1	}
 			]
 		},
 		{
 			"name" :	"tree2",
-			"mask" :	"11",
+			"mask" :	"110",
 			"components":
 			[
-				{
-					"id":	0,
-					"drawable":		"tree2"
-				},
-				{
-					"id":	1,
-					"x":	0,
-					"y":	0
-				}			
+				{	"id":	0,	"drawable":	"tree6"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	1	}
 			]
 		},
 		{
 			"name" :	"tree3",
-			"mask" :	"11",
+			"mask" :	"110",
 			"components":
 			[
-				{
-					"id":	0,
-					"drawable":		"tree3"
-				},
-				{
-					"id":	1,
-					"x":	0,
-					"y":	0
-				}			
+				{	"id":	0,	"drawable":	"tree6"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	1	}
 			]
 		},
 		{
 			"name" :	"tree4",
-			"mask" :	"11",
+			"mask" :	"110",
 			"components":
 			[
-				{
-					"id":	0,
-					"drawable":		"tree4"
-				},
-				{
-					"id":	1,
-					"x":	0,
-					"y":	0
-				}			
+				{	"id":	0,	"drawable":	"tree6"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	1	}
 			]
 		},
 		{
 			"name" :	"tree5",
-			"mask" :	"11",
+			"mask" :	"110",
 			"components":
 			[
-				{
-					"id":	0,
-					"drawable":		"tree5"
-				},
-				{
-					"id":	1,
-					"x":	0,
-					"y":	0
-				}			
+				{	"id":	0,	"drawable":	"tree6"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	1	}
 			]
 		},
 		{
 			"name" :	"tree6",
-			"mask" :	"11",
+			"mask" :	"110",
 			"components":
 			[
-				{
-					"id":	0,
-					"drawable":		"tree6"
-				},
-				{
-					"id":	1,
-					"x":	0,
-					"y":	0
-				}			
+				{	"id":	0,	"drawable":	"tree6"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	1	}
+			]
+		},
+		{
+			"name" :	"blue",
+			"mask" :	"111",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"blue"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"plantable":	0}
+			]
+		},
+		{
+			"name" :	"yellow",
+			"mask" :	"111",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"yellow"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"plantable":	1}
+			]
+		},
+		{
+			"name" :	"green0",
+			"mask" :	"111",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"green0"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"plantable":	1}
 			]
 		}
     ]

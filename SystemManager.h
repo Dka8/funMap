@@ -5,9 +5,9 @@
 #include "SharedContext.h"
 ////#include "EntityManager.h"
 #include "EventQueue.h"
-//#include "MessageHandler.h"
+#include "MessageHandler.h"
 #include "S_Renderer.h"
-#include "S_Position.h"
+#include "S_Planting.h"
 
 
 using SystemContainer = std::unordered_map<System, S_Base*>;
@@ -19,10 +19,8 @@ public:
 	SystemManager(wv::SharedContext* l_context);
 	~SystemManager();
 
-//	MessageHandler* GetMessageHandler();
-//
 	void AddEvent(const EntityId &l_entity, const EventId &l_event);
-//
+
 	void Update(float l_dt);
 	void HandleEvents();
 	void Draw();
@@ -39,13 +37,13 @@ public:
 		return (itr != m_systems.end() ? dynamic_cast<T*>(itr->second) : nullptr);
 	}
 	wv::SharedContext* getContext();
+	MessageHandler* GetMessageHandler();
 private:
 	SystemContainer			m_systems;
 	EntityEventContainer	m_events;
-//	MessageHandler			m_messages;
-//
+	MessageHandler			m_messages;
+
 	wv::SharedContext*			m_context;
 };
-//
 #endif // !SystemManager_H
 

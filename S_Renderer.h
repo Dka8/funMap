@@ -12,6 +12,7 @@ public:
 	void Notify(const Message &l_message);
 
 	void Render();
+	void sort();
 private:
 };
 

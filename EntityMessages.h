@@ -3,7 +3,7 @@
 #define EntityMessages_H
 
 enum class EntityMessage {
-	AddObject
+	PlantTree
 };
 
 #endif // !EntityMessages_H

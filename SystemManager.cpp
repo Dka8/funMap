@@ -3,7 +3,7 @@
 //
 SystemManager::SystemManager(wv::SharedContext* l_context) : m_context(l_context){
 	m_systems[System::Renderer] = new S_Renderer(this);
-	m_systems[System::Position] = new S_Position(this);
+	m_systems[System::Planting] = new S_Planting(this);
 }
 SystemManager::~SystemManager() { /*PurgeSystems();*/ }
 
@@ -67,3 +67,4 @@ void SystemManager::PurgeSystems() {
 	m_systems.clear();
 }
 wv::SharedContext* SystemManager::getContext() { return m_context; }
+MessageHandler* SystemManager::GetMessageHandler() { return &m_messages; }

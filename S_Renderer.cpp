@@ -28,8 +28,9 @@ void S_Renderer::Update(float dt) {
 }
 
 void S_Renderer::HandleEvent(const EntityId& l_entity, const EntityEvent& l_event) {
-//	EntityManager* entities = m_systemManager->GetEntityManager();
-//	if (l_event == EntityEvent::PlantTree) {
+	//EntityManager* entities = m_systemManager->getContext()->m_entityManager;
+	if (l_event == EntityEvent::TreePlanted) {
+		sort();
 //		C_Drawable *drawable = entities->GetComponent<C_Drawable>(l_entity, Component::Drawable);
 //		std::string drawableName = drawable->getDrawableName();
 //		wv::Drawable* drawablePrt = m_systemManager->GetEntityManager()
@@ -39,7 +40,7 @@ void S_Renderer::HandleEvent(const EntityId& l_entity, const EntityEvent& l_even
 //		}
 //		C_Position *position = entities->GetComponent<C_Position>(l_entity, Component::Position);
 //		position->SetPosition(10, 10);
-//	}
+	}
 }
 //
 void S_Renderer::Notify(const Message &l_message) {
@@ -67,7 +68,7 @@ void S_Renderer::Render() {
 		drawable = entities->GetComponent<C_Drawable>(entity, Component::Drawable);
 		if (entities->HasComponent(entity, Component::Position)) {
 			C_Position* positionComponent = entities->GetComponent<C_Position>(entity, Component::Position);
-			sf::Vector2i itemCoord = positionComponent->GetPosition();
+			sf::Vector2i itemCoord = positionComponent->getPosition();
 			sf::Vector2f itemPos = wv::Drawable::mapCoordsToPixel(itemCoord);
 			if ((itemPos.x > (viewRect.left - wv::Drawable::getScale())
 				&& itemPos.x < (viewRect.left + viewRect.width + wv::Drawable::getScale()))
@@ -83,4 +84,20 @@ void S_Renderer::Render() {
 		}
 
 	}
+}
+void S_Renderer::sort() {
+	EntityManager* e_mgr = m_systemManager->getContext()->m_entityManager;
+	std::sort(m_entities.begin(), m_entities.end(),
+		[e_mgr](const EntityId& entity1, const EntityId& entity2) {
+		C_Position* positionC1 = e_mgr->GetComponent<C_Position>(entity1, Component::Position);
+		C_Position* positionC2 = e_mgr->GetComponent<C_Position>(entity2, Component::Position);
+		
+		if (positionC1->getZ() == positionC2->getZ()) {
+			if (positionC1->getPosition().y == positionC2->getPosition().y) {
+				return (positionC1->getPosition().x < positionC2->getPosition().x);
+			}
+			return (positionC1->getPosition().y < positionC2->getPosition().y);
+		}
+		return (positionC1->getZ() < positionC2->getZ());
+	});
 }

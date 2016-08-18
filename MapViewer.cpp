@@ -1,6 +1,7 @@
 #include "MapViewer.h"
 #include "Window.h"
 #include "EntityManager.h"
+#include "SystemManager.h"
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <fstream>
@@ -48,12 +49,6 @@ namespace wv {
 			m_context->m_window->zoomView(m_zoomFactor);
 			m_zoomFactor = 1;
 		}
-		sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
-		sf::Vector2i mousePixels = sf::Mouse::getPosition(*m_context->m_window->GetRenderWindow());
-		sf::Vector2f mousePos = window->mapPixelToCoords(mousePixels);
-
-		sf::Vector2i mouseCoords = wv::Drawable::mapPixelToCoords(mousePos);
-		m_mouse.second->setCoords(mouseCoords);
 	}
 
 	void MapViewer::draw() {
@@ -69,6 +64,7 @@ namespace wv {
 		m_mouse.second->setCoords(mouseCoords);
 		window->draw(*m_mouse.second);
 	}
+	wv::Map* MapViewer::getMap() { return m_map; }
 
 	void MapViewer::react(wv::EventDetails* l_details) {
 		std::string event = l_details->m_name;
@@ -117,7 +113,18 @@ namespace wv {
 		}
 		else if (event == "emplaceTree") {
 			if (m_mouse.first != "empty") {
-				m_context->m_entityManager->AddEntity(m_mouse.first);
+				sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
+				sf::Vector2i mousePixels = sf::Mouse::getPosition(*m_context->m_window->GetRenderWindow());
+				sf::Vector2f mousePos = window->mapPixelToCoords(mousePixels);
+				sf::Vector2i mouseCoords = wv::Drawable::mapPixelToCoords(mousePos);
+				int tileId = m_context->m_entityManager->getEntityByCoords(mouseCoords);
+				if (tileId == -1) { return; }
+				Message msg((MessageType)EntityMessage::PlantTree);
+				msg.m_receiver = tileId;
+				msg.m_entityType = m_mouse.first;
+				msg.m_2f.m_x = mouseCoords.x;
+				msg.m_2f.m_y = mouseCoords.y;
+				m_context->m_systemManager->GetMessageHandler()->Dispatch(msg);
 			}
 		}
 	}

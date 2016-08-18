@@ -134,7 +134,7 @@
     <ClCompile Include="MapViewer.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="S_Base.cpp" />
-    <ClCompile Include="S_Position.cpp" />
+    <ClCompile Include="S_Planting.cpp" />
     <ClCompile Include="S_Renderer.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -145,7 +145,7 @@
     <ClInclude Include="C_Base.h" />
     <ClInclude Include="C_Drawable.h" />
     <ClInclude Include="C_Position.h" />
-    <ClInclude Include="C_Z.h" />
+    <ClInclude Include="C_Plantable.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="ECS_Types.h" />
     <ClInclude Include="EntityEvent.h" />
@@ -166,7 +166,7 @@
     <ClInclude Include="SharedContext.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="S_Base.h" />
-    <ClInclude Include="S_Position.h" />
+    <ClInclude Include="S_Planting.h" />
     <ClInclude Include="S_Renderer.h" />
     <ClInclude Include="VLayer.h" />
     <ClInclude Include="Window.h" />

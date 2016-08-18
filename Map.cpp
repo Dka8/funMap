@@ -1,6 +1,8 @@
 #include "Map.h"
 #include "Drawable.h"
 #include "DrawableManager.h"
+#include "EntityManager.h"
+#include "SystemManager.h"
 #include "Window.h"
 #include <iostream>
 #include <fstream>
@@ -31,20 +33,33 @@ namespace wv {
 		for (auto &item : items) {
 			addItem(item);
 		}
+		S_Renderer* render = m_context->m_systemManager->GetSystem<S_Renderer>(System::Renderer);
+		render->sort();
 	}
 
 	void Map::addItem(const nlohmann::json& l_json) {
 		std::string itemType = l_json["type"].get<std::string>();
 		sf::Vector2i itemCoords = sf::Vector2i(l_json["x"].get<int>(),
 												l_json["y"].get<int>());
-		wv::Drawable* drawable = m_context->m_drawableManager->getDrawable(itemType);
-		if (drawable) {
-			m_items.emplace(itemCoords, drawable);
+		int entity = m_context->m_entityManager->AddEntity(itemType);
+		C_Position* itemPosition = m_context->m_entityManager->GetComponent<C_Position>(entity, Component::Position);
+		itemPosition->setPosition(itemCoords);
+
+		//wv::Drawable* drawable = m_context->m_drawableManager->getDrawable(itemType);
+		//if (drawable) {
+		//	m_items.emplace(itemCoords, drawable);
+		//}
+	}
+	wv::Drawable* Map::getItem(const sf::Vector2i& l_pos) {
+		auto itr = m_items.find(l_pos);
+		if (itr == m_items.end()) {
+			return nullptr;
 		}
+		else return itr->second;
 	}
 
 	void Map::draw() {
-		sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
+		/*sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
 		sf::View windowView = window->getView();
 
 		sf::FloatRect viewRect = sf::FloatRect(windowView.getCenter().x - windowView.getSize().x / 2.f,
@@ -63,6 +78,7 @@ namespace wv {
 				item.second->setCoords(itemCoord);
 				window->draw(*(item.second));
 			}
-		}
+		}*/
 	}
+	wv::Items* Map::getItems() { return &m_items; }
 }

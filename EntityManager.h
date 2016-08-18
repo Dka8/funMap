@@ -9,6 +9,7 @@
 /////#include "ResourceManager.hpp"
 #include "C_Drawable.h"
 #include "C_Position.h"
+#include "C_Plantable.h"
 //
 using EntityId = unsigned int;
 //
@@ -35,7 +36,9 @@ public:
 	bool AddComponent(const EntityId &l_entity, const Component &l_component);
 	bool RemoveComponent(const EntityId &l_entity, const Component &l_component);
 	bool HasComponent(const EntityId &l_entity, const Component &l_component);
-//
+
+	EntityId getEntityByCoords(const sf::Vector2i&);
+
 	template<class T>
 	T* GetComponent(const EntityId &l_entity, const Component &l_component) {
 		auto itr = m_entities.find(l_entity);

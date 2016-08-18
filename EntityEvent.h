@@ -3,7 +3,7 @@
 #define EntityEvent_H
 
 enum class EntityEvent {
-	Spawned
+	Spawned, TreePlanted
 };
 
 #endif // !EntityEvent_H

@@ -77,6 +77,17 @@ namespace wv {
 			return itr->second;
 		}
 	
+		bool getDrawableType(const wv::Drawable* l_drawable, std::string l_drName) {
+			std::string type = "noname";
+			for (auto& object : m_objects) {
+				if (object.second == l_drawable) {
+					l_drName = object.first;
+					return true;
+				}
+			}
+			return false;
+		}
+
 	private:
 		Drawables			m_objects;
 		utils::ResourceManager<sf::Texture, std::string>* m_textureMgr;

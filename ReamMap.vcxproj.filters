@@ -57,7 +57,7 @@
     <ClCompile Include="S_Renderer.cpp">
       <Filter>Source Files\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="S_Position.cpp">
+    <ClCompile Include="S_Planting.cpp">
       <Filter>Source Files\ECS</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,10 +146,10 @@
     <ClInclude Include="S_Renderer.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="S_Position.h">
+    <ClInclude Include="C_Plantable.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="C_Z.h">
+    <ClInclude Include="S_Planting.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
   </ItemGroup>
