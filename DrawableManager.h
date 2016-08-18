@@ -28,9 +28,7 @@ namespace wv {
 
 		DrawableManager(utils::ResourceManager<sf::Texture, std::string>* l_textMgr)
 			: m_textureMgr(l_textMgr) {
-			loadFromFile("objects.json");
-			//m_factory[DrawableType::Tile] = [this](){return new wv::Tile; };
-			//m_factory[DrawableType::Sprite] = [this]() {return new wv::Sprite; };
+			loadFromFile("drawables.json");
 		};
 		
 		~DrawableManager() {};
@@ -59,11 +57,6 @@ namespace wv {
 		}
 
 		bool addDrawable(const nlohmann::json& l_json) {
-			/*auto itr = m_factory.find(l_type);
-			if (itr == m_factory.end()) {
-				std::cout << "DrawableType not found. add Drawable fail\n";
-				return false;
-			}*/
 			Drawable* newObject = new Drawable(l_json, m_textureMgr);
 			std::string objectName = "";
 			try	{
@@ -86,7 +79,6 @@ namespace wv {
 	
 	private:
 		Drawables			m_objects;
-//		DrawableFactoy	m_factory;
 		utils::ResourceManager<sf::Texture, std::string>* m_textureMgr;
 	};
 

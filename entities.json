@@ -1,0 +1,101 @@
+{
+	"entities" :
+    [
+		{
+			"name" :	"tree1",
+			"mask" :	"11",
+			"components":
+			[
+				{
+					"id":	0,
+					"drawable":		"tree1"
+				},
+				{
+					"id":	1,
+					"x":	0,
+					"y":	0
+				}			
+			]
+		},
+		{
+			"name" :	"tree2",
+			"mask" :	"11",
+			"components":
+			[
+				{
+					"id":	0,
+					"drawable":		"tree2"
+				},
+				{
+					"id":	1,
+					"x":	0,
+					"y":	0
+				}			
+			]
+		},
+		{
+			"name" :	"tree3",
+			"mask" :	"11",
+			"components":
+			[
+				{
+					"id":	0,
+					"drawable":		"tree3"
+				},
+				{
+					"id":	1,
+					"x":	0,
+					"y":	0
+				}			
+			]
+		},
+		{
+			"name" :	"tree4",
+			"mask" :	"11",
+			"components":
+			[
+				{
+					"id":	0,
+					"drawable":		"tree4"
+				},
+				{
+					"id":	1,
+					"x":	0,
+					"y":	0
+				}			
+			]
+		},
+		{
+			"name" :	"tree5",
+			"mask" :	"11",
+			"components":
+			[
+				{
+					"id":	0,
+					"drawable":		"tree5"
+				},
+				{
+					"id":	1,
+					"x":	0,
+					"y":	0
+				}			
+			]
+		},
+		{
+			"name" :	"tree6",
+			"mask" :	"11",
+			"components":
+			[
+				{
+					"id":	0,
+					"drawable":		"tree6"
+				},
+				{
+					"id":	1,
+					"x":	0,
+					"y":	0
+				}			
+			]
+		}
+    ]
+}

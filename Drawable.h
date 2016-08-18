@@ -97,6 +97,33 @@ namespace wv {
 		sf::ConvexShape		m_shape;
 	};
 
+	class PlainTile : public wv::DrawableType {
+	public:
+		PlainTile(const nlohmann::json& l_json,
+			utils::ResourceManager<sf::Texture, std::string>* l_textureMgr)
+		{
+			m_shape = geometry::HexaIso::getShape();
+			m_shape.setScale(geometry::HexaIso::getScale(), geometry::HexaIso::getScale());
+			m_shape.setOutlineColor(sf::Color(255, 255, 255, 64));
+			m_shape.setOutlineThickness(2.f / geometry::HexaIso::getScale());
+			try
+			{
+				int r, g, b;
+				r = l_json["r"].get<int>();
+				g = l_json["g"].get<int>();
+				b = l_json["b"].get<int>();
+				m_shape.setFillColor(sf::Color(r, g, b));
+			}
+			catch (...) {}
+		};
+		void draw(sf::RenderTarget& l_target, sf::RenderStates l_states) const {
+			l_target.draw(m_shape, l_states);
+		};
+
+	private:
+		sf::ConvexShape		m_shape;
+	};
+
 	class Mouse : public wv::DrawableType {
 	public:
 		Mouse(const nlohmann::json& l_json,
@@ -108,7 +135,7 @@ namespace wv {
 			{
 				int alphaChannel = 10;
 				alphaChannel = l_json["alpha"].get<int>();
-				m_shape.setFillColor(sf::Color(0, 0, 0, alphaChannel));
+				m_shape.setFillColor(sf::Color(255, 255, 255, alphaChannel));
 				
 			}
 			catch (...) {}			
@@ -139,6 +166,9 @@ namespace wv {
 			}
 			else if (objectType == "mouse") {
 				m_drawable = new Mouse(l_json, l_textureMgr);
+			}
+			else if (objectType == "plaintile") {
+				m_drawable = new PlainTile(l_json, l_textureMgr);
 			}
 		};
 		virtual ~Drawable() {};

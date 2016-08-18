@@ -15,7 +15,6 @@ namespace wv {
 		MapViewer(wv::SharedContext* l_context);
 		~MapViewer();
 		
-		void loadMapFromFile(const std::string l_file);
 		void update(sf::Time l_time);
 		void draw();
 	private:
@@ -23,14 +22,14 @@ namespace wv {
 		//void move(const sf::Vector2i& l_delta);
 		//void zoom(const float l_zoom);
 		//sf::Vector2i getMousePosition() const;
-		void loadMapFromJson(const nlohmann::json& l_json);
+
 
 		float				m_zoomFactor;
 		sf::Vector2i		m_moveVector;
 		float				m_moveSpeed;
 		wv::Map*			m_map;
 		wv::SharedContext*	m_context;
-		wv::Drawable*		m_mouse;
+		std::pair<std::string,wv::Drawable*>		m_mouse;
 	};
 }
 

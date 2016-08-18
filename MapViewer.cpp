@@ -1,5 +1,6 @@
 #include "MapViewer.h"
 #include "Window.h"
+#include "EntityManager.h"
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <fstream>
@@ -11,8 +12,7 @@ namespace wv {
 		m_moveSpeed		(200),
 		m_moveVector	(sf::Vector2i(0,0)),
 		m_zoomFactor	(1),
-		m_map			(nullptr),
-		m_mouse			(nullptr)
+		m_map			(nullptr)
 	{
 		wv::EventManager* event = m_context->m_window->GetEventManager();
 		event->AddCallback("moveLeft", &MapViewer::react, this);
@@ -27,27 +27,13 @@ namespace wv {
 		event->AddCallback("tree5", &MapViewer::react, this);
 		event->AddCallback("tree6", &MapViewer::react, this);
 		event->AddCallback("empty", &MapViewer::react, this);
+		event->AddCallback("emplaceTree", &MapViewer::react, this);
 
-		loadMapFromFile("layer.json");
-		m_mouse = m_context->m_itemManager->getDrawable("empty");
+		m_map = new wv::Map(m_context, "map.json");
+		m_mouse.first = "empty";
+		m_mouse.second = m_context->m_drawableManager->getDrawable("empty");
 	}
 	MapViewer::~MapViewer(){}
-
-	void MapViewer::loadMapFromFile(const std::string l_file){
-		std::ifstream fin;
-		fin.open(l_file);
-		if (!fin.is_open()) {
-			std::cout << "cannot open file with map" << std::endl;
-			return;
-		}
-		nlohmann::json map = nlohmann::json::parse(fin);
-		fin.close();
-		loadMapFromJson(map);
-	}
-
-	void MapViewer::loadMapFromJson(const nlohmann::json& l_json) {
-		m_map = new wv::Map(m_context, l_json);
-	}
 	
 	void MapViewer::update(sf::Time l_time) {
 		//sf::View* view = m_window->GetWindowView();
@@ -67,15 +53,21 @@ namespace wv {
 		sf::Vector2f mousePos = window->mapPixelToCoords(mousePixels);
 
 		sf::Vector2i mouseCoords = wv::Drawable::mapPixelToCoords(mousePos);
-		m_mouse->setCoords(mouseCoords);
+		m_mouse.second->setCoords(mouseCoords);
 	}
 
 	void MapViewer::draw() {
 		if (m_map) {
 			m_map->draw();
 		}
+		
 		sf::RenderWindow* window = m_context->m_window->GetRenderWindow();
-		window->draw(*m_mouse);
+		sf::Vector2i mousePixels = sf::Mouse::getPosition(*m_context->m_window->GetRenderWindow());
+		sf::Vector2f mousePos = window->mapPixelToCoords(mousePixels);
+
+		sf::Vector2i mouseCoords = wv::Drawable::mapPixelToCoords(mousePos);
+		m_mouse.second->setCoords(mouseCoords);
+		window->draw(*m_mouse.second);
 	}
 
 	void MapViewer::react(wv::EventDetails* l_details) {
@@ -96,25 +88,37 @@ namespace wv {
 			m_zoomFactor = 1 - (l_details->m_mouseWheelDelta) / 20.f;
 		}
 		else if (event == "empty") {
-			m_mouse = m_context->m_itemManager->getDrawable("empty");
+			m_mouse.first = "empty";
+			m_mouse.second = m_context->m_drawableManager->getDrawable("empty");
 		}
 		else if (event == "tree1") {
-			m_mouse = m_context->m_itemManager->getDrawable("tree1");
+			m_mouse.first = "tree1";
+			m_mouse.second = m_context->m_drawableManager->getDrawable("tree1");
 		}
 		else if (event == "tree2") {
-			m_mouse = m_context->m_itemManager->getDrawable("tree2");
+			m_mouse.first = "tree2";
+			m_mouse.second = m_context->m_drawableManager->getDrawable("tree2");
 		}
 		else if (event == "tree3") {
-			m_mouse = m_context->m_itemManager->getDrawable("tree3");
+			m_mouse.first = "tree3";
+			m_mouse.second = m_context->m_drawableManager->getDrawable("tree3");
 		}
 		else if (event == "tree4") {
-			m_mouse = m_context->m_itemManager->getDrawable("tree4");
+			m_mouse.first = "tree4";
+			m_mouse.second = m_context->m_drawableManager->getDrawable("tree4");
 		}
 		else if (event == "tree5") {
-			m_mouse = m_context->m_itemManager->getDrawable("tree5");
+			m_mouse.first = "tree5";
+			m_mouse.second = m_context->m_drawableManager->getDrawable("tree5");
 		}
 		else if (event == "tree6") {
-			m_mouse = m_context->m_itemManager->getDrawable("tree6");
+			m_mouse.first = "tree6";
+			m_mouse.second = m_context->m_drawableManager->getDrawable("tree6");
+		}
+		else if (event == "emplaceTree") {
+			if (m_mouse.first != "empty") {
+				m_context->m_entityManager->AddEntity(m_mouse.first);
+			}
 		}
 	}
 }
