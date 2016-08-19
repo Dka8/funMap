@@ -18,13 +18,15 @@ void S_Planting::HandleEvent(const EntityId& l_entity, const EntityEvent& l_even
 	EntityManager* entities = m_systemManager->getContext()->m_entityManager;
 	if (l_event == EntityEvent::NewGround) {
 		std::list<int> entitiesAround = getEntitiesAround(l_entity);
+		C_Plantable* plantable
+			= entities->GetComponent<C_Plantable>(l_entity, Component::Plantable);
 		for (auto& entityAround : entitiesAround) {
-			C_Plantable* plantable
+			C_Plantable* plantableAround
 				= entities->GetComponent<C_Plantable>(entityAround, Component::Plantable);
-			if (plantable->getType() == C_Plantable::Type::Sand) {
+			if (plantableAround->getType() == C_Plantable::Type::Water) {
 				plantable->setType(C_Plantable::Type::Ground);
 				Message msg((MessageType)EntityMessage::UpdateTile);
-				msg.m_receiver = entityAround;
+				msg.m_receiver = l_entity;
 				msg.m_int = 2;
 				m_systemManager->GetMessageHandler()->Dispatch(msg);
 			}
@@ -45,7 +47,7 @@ void S_Planting::HandleEvent(const EntityId& l_entity, const EntityEvent& l_even
 				m_systemManager->GetMessageHandler()->Dispatch(msg);
 			}
 		}
-		onNewMap();
+		//onNewMap();
 	}
 }
 

@@ -13,9 +13,10 @@ public:
 	void Notify(const Message &l_message);
 
 	void Interact(wv::EventDetails* l_details);
-	std::list<int> getEntitiesAround(const EntityId);
+
 private:
-	EntityId	m_entity;
+	EntityId			m_tile;
+	C_Plantable::Type	m_newTileType;
 };
 
 #endif // !S_Renderer_H

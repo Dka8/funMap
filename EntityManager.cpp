@@ -6,7 +6,7 @@ EntityManager::EntityManager(wv::SharedContext* l_context) : m_context(l_context
 	AddComponentType<C_Drawable>(Component::Drawable);
 	AddComponentType<C_Position>(Component::Position);
 	AddComponentType<C_Plantable>(Component::Plantable);
-	AddComponentType<C_Plantable>(Component::InteractTime);
+	AddComponentType<C_InteractTime>(Component::InteractTime);
 
 	loadEntitiesFromFile("entities.json");
 }

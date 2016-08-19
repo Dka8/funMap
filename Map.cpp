@@ -35,8 +35,6 @@ namespace wv {
 		}
 		S_Renderer* render = m_context->m_systemManager->GetSystem<S_Renderer>(System::Renderer);
 		render->sort();
-		S_Planting* planting = m_context->m_systemManager->GetSystem<S_Planting>(System::Planting);
-		planting->onNewMap();
 	}
 
 	void Map::addItem(const nlohmann::json& l_json) {

@@ -16,6 +16,7 @@ public:
 	}
 	sf::Time getTime() { return m_timer = m_clock.getElapsedTime(); }
 	virtual bool isDone() = 0;
+	bool IsBusy() { return m_isBusy; }
 
 protected:
 	sf::Clock	m_clock;

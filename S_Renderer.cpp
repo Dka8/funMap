@@ -56,34 +56,42 @@ void S_Renderer::Notify(const Message &l_message) {
 			if (l_message.m_int == 0) {
 				newDrawableName = "blue";
 				newDrawable = m_systemManager->getContext()->m_drawableManager->getDrawable(newDrawableName);
+				sort();
 			}
 			else if (l_message.m_int == 1) {
 				newDrawableName = "yellow";
 				newDrawable = m_systemManager->getContext()->m_drawableManager->getDrawable(newDrawableName);
+				sort();
 			}
 			else if (l_message.m_int == 2) {
 				newDrawableName = "green_0";
 				newDrawable = m_systemManager->getContext()->m_drawableManager->getDrawable(newDrawableName);
+				sort();
 			}
 			else if (l_message.m_int == 3) {
 				newDrawableName = "green_1";
 				newDrawable = m_systemManager->getContext()->m_drawableManager->getDrawable(newDrawableName);
+				sort();
 			}
 			else if (l_message.m_int == 4) {
 				newDrawableName = "green_2";
 				newDrawable = m_systemManager->getContext()->m_drawableManager->getDrawable(newDrawableName);
+				sort();
 			}
 			else if (l_message.m_int == 5) {
 				newDrawableName = "green_3";
 				newDrawable = m_systemManager->getContext()->m_drawableManager->getDrawable(newDrawableName);
+				sort();
 			}
 			else if (l_message.m_int == 6) {
 				newDrawableName = "green_4";
 				newDrawable = m_systemManager->getContext()->m_drawableManager->getDrawable(newDrawableName);
+				sort();
 			}
 			else {
 				newDrawableName = "green_5";
 				newDrawable = m_systemManager->getContext()->m_drawableManager->getDrawable(newDrawableName);
+				sort();
 			}
 			drawable->setDrawable(newDrawableName ,newDrawable);
 		}
