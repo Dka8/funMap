@@ -10,6 +10,7 @@
 #include "C_Drawable.h"
 #include "C_Position.h"
 #include "C_Plantable.h"
+#include "C_InteractTime.h"
 //
 using EntityId = unsigned int;
 //
@@ -37,7 +38,7 @@ public:
 	bool RemoveComponent(const EntityId &l_entity, const Component &l_component);
 	bool HasComponent(const EntityId &l_entity, const Component &l_component);
 
-	EntityId getEntityByCoords(const sf::Vector2i&);
+	int getEntityByCoords(const sf::Vector2i&, int = 0);
 
 	template<class T>
 	T* GetComponent(const EntityId &l_entity, const Component &l_component) {

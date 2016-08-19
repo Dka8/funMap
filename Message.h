@@ -12,7 +12,6 @@ struct Message {
 	MessageType		m_type;
 	int				m_sender;
 	int				m_receiver;
-	std::string		m_entityType;
 
 	union 
 	{
@@ -20,7 +19,6 @@ struct Message {
 		bool		m_bool;
 		int			m_int;
 		float		m_float;
-		char*		m_char;
 	};	
 };
 

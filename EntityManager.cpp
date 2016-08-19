@@ -6,6 +6,7 @@ EntityManager::EntityManager(wv::SharedContext* l_context) : m_context(l_context
 	AddComponentType<C_Drawable>(Component::Drawable);
 	AddComponentType<C_Position>(Component::Position);
 	AddComponentType<C_Plantable>(Component::Plantable);
+	AddComponentType<C_Plantable>(Component::InteractTime);
 
 	loadEntitiesFromFile("entities.json");
 }
@@ -37,7 +38,7 @@ int EntityManager::AddEntity(const Bitmask &l_mask){
 		}
 	}
 	m_context->m_systemManager->EntityModified(entity, l_mask);
-	m_context->m_systemManager->AddEvent(entity, (EventId)EntityEvent::Spawned);
+	//m_context->m_systemManager->AddEvent(entity, (EventId)EntityEvent::Spawned);
 	return entity;
 }
 
@@ -63,7 +64,7 @@ int EntityManager::AddEntity(const std::string &l_entityName){
 					std::cout << "cannot find drawable for new entity" << std::endl;
 				}
 				C_Drawable* drawableComponent = (C_Drawable*)newComponent;
-				drawableComponent->setDrawable(drawable);
+				drawableComponent->setDrawable(l_entityName, drawable);
 			}
 		}
 	}
@@ -118,14 +119,15 @@ bool EntityManager::HasComponent(const EntityId &l_entity, const Component &l_co
 	if (itr == m_entities.end()) { return false; }
 	return itr->second.first.GetBit((unsigned int)l_component);
 }
-EntityId EntityManager::getEntityByCoords(const sf::Vector2i& l_coords) {
+int EntityManager::getEntityByCoords(const sf::Vector2i& l_coords, int l_z) {
 	for (auto &entity : m_entities) {
 		if (!HasComponent(entity.first, Component::Position)) { continue; }
 		C_Position* position = GetComponent<C_Position>(entity.first, Component::Position);
-		if ((position->getPosition().x == l_coords.x) && (position->getPosition().y == l_coords.y)) {
+		if ((position->getPosition().x == l_coords.x)
+			&& (position->getPosition().y == l_coords.y)
+			&& (position->getZ() == l_z)) {
 			return entity.first;
-		}
-		
+		}		
 	}
 	return -1;
 }

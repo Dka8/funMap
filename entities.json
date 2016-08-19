@@ -3,7 +3,7 @@
     [
 		{
 			"name" :	"tree1",
-			"mask" :	"110",
+			"mask" :	"1100",
 			"components":
 			[
 				{	"id":	0,	"drawable":	"tree6"	},
@@ -12,7 +12,7 @@
 		},
 		{
 			"name" :	"tree2",
-			"mask" :	"110",
+			"mask" :	"1100",
 			"components":
 			[
 				{	"id":	0,	"drawable":	"tree6"	},
@@ -21,7 +21,7 @@
 		},
 		{
 			"name" :	"tree3",
-			"mask" :	"110",
+			"mask" :	"1100",
 			"components":
 			[
 				{	"id":	0,	"drawable":	"tree6"	},
@@ -30,7 +30,7 @@
 		},
 		{
 			"name" :	"tree4",
-			"mask" :	"110",
+			"mask" :	"1100",
 			"components":
 			[
 				{	"id":	0,	"drawable":	"tree6"	},
@@ -39,7 +39,7 @@
 		},
 		{
 			"name" :	"tree5",
-			"mask" :	"110",
+			"mask" :	"1100",
 			"components":
 			[
 				{	"id":	0,	"drawable":	"tree6"	},
@@ -48,7 +48,7 @@
 		},
 		{
 			"name" :	"tree6",
-			"mask" :	"110",
+			"mask" :	"1100",
 			"components":
 			[
 				{	"id":	0,	"drawable":	"tree6"	},
@@ -57,32 +57,102 @@
 		},
 		{
 			"name" :	"blue",
-			"mask" :	"111",
+			"mask" :	"1110",
 			"components":
 			[
 				{	"id":	0,	"drawable":	"blue"	},
 				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
-				{	"id":	2,	"plantable":	0}
+				{	"id":	2,	"type":	"water",	"plantable":	0, "level":	0	}
 			]
 		},
 		{
 			"name" :	"yellow",
-			"mask" :	"111",
+			"mask" :	"1110",
 			"components":
 			[
 				{	"id":	0,	"drawable":	"yellow"	},
 				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
-				{	"id":	2,	"plantable":	1}
+				{	"id":	2,	"type":	"sand",	"plantable":	0, "level":	0}
 			]
 		},
 		{
-			"name" :	"green0",
-			"mask" :	"111",
+			"name" :	"green_0",
+			"mask" :	"1110",
 			"components":
 			[
-				{	"id":	0,	"drawable":	"green0"	},
+				{	"id":	0,	"drawable":	"green_0"	},
 				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
-				{	"id":	2,	"plantable":	1}
+				{	"id":	2,	"type":	"ground",	"plantable":	1, "level":	0}
+			]
+		},
+		{
+			"name" :	"green_1",
+			"mask" :	"1110",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"green_1"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"type":	"ground",	"plantable":	1, "level":	1}
+			]
+		},
+		{
+			"name" :	"green_2",
+			"mask" :	"1110",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"green_2"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"type":	"ground",	"plantable":	1, "level":	2}
+			]
+		},
+		{
+			"name" :	"green_3",
+			"mask" :	"1110",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"green_3"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"type":	"ground",	"plantable":	1, "level":	3}
+			]
+		},
+		{
+			"name" :	"green_4",
+			"mask" :	"1110",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"green_4"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"type":	"ground",	"plantable":	1, "level":	4}
+			]
+		},
+		{
+			"name" :	"green_5",
+			"mask" :	"1110",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"green_5"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"type":	"ground",	"plantable":	1, "level":	5}
+			]
+		},
+		{
+			"name" :	"green_6",
+			"mask" :	"1110",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"green_6"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	0	},
+				{	"id":	2,	"type":	"ground",	"plantable":	1, "level":	6}
+			]
+		},
+		{
+			"name" :	"empty",
+			"mask" :	"1101",
+			"components":
+			[
+				{	"id":	0,	"drawable":	"empty"	},
+				{	"id":	1,	"x":	0,	"y":	0,	"z":	99	},
+				{	"id":	3,	"time":	2.0	}
 			]
 		}
     ]

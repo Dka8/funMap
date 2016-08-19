@@ -60,6 +60,9 @@
     <ClCompile Include="S_Planting.cpp">
       <Filter>Source Files\ECS</Filter>
     </ClCompile>
+    <ClCompile Include="S_Mouse.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HexaIso.h">
@@ -150,6 +153,15 @@
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="S_Planting.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="C_Timer.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="C_InteractTime.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="S_Mouse.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
   </ItemGroup>

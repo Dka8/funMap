@@ -12,7 +12,7 @@ public:
 	void readIn(const nlohmann::json &l_json) override{
 		m_position.x = l_json["x"].get<int>();
 		m_position.y = l_json["y"].get<int>();
-		m_position.y = l_json["z"].get<int>();
+		m_z = l_json["z"].get<int>();
 	}
 	
 	const float getZ() const { return m_z; }

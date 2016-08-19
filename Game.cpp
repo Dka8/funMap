@@ -14,6 +14,7 @@ namespace wv {
 		m_context.m_drawableManager = m_context.m_textureManager->makeItemManager();
 		m_context.m_systemManager = new SystemManager(&m_context);
 		m_context.m_entityManager = new EntityManager(&m_context);
+
 		m_context.m_mapViewer = new wv::MapViewer(&m_context);
 	}
 

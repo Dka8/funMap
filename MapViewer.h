@@ -31,7 +31,6 @@ namespace wv {
 		float				m_moveSpeed;
 		wv::Map*			m_map;
 		wv::SharedContext*	m_context;
-		std::pair<std::string,wv::Drawable*>		m_mouse;
 	};
 }
 

@@ -65,6 +65,7 @@ namespace wv {
 			catch(...){}
 			if (objectName == "") { return false; }
 			m_objects.emplace(objectName, newObject);
+			std::cout << "added drawable " << objectName << std::endl;
 			return true;
 		}
 				

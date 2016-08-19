@@ -13,7 +13,10 @@ public:
 
 	std::string getDrawableName() const { return m_drawableName; }
 	
-	void setDrawable(wv::Drawable* l_drawable) { m_drawable = l_drawable; }
+	void setDrawable(std::string l_name, wv::Drawable* l_drawable) {
+		m_drawableName = l_name;
+		m_drawable = l_drawable;
+	}
 	wv::Drawable* getDrawable() const {
 		if (m_drawable) {
 			return m_drawable;

@@ -2,8 +2,9 @@
 //#include "EntityManager.h"
 //
 SystemManager::SystemManager(wv::SharedContext* l_context) : m_context(l_context){
-	m_systems[System::Renderer] = new S_Renderer(this);
+	m_systems[System::Mouse] = new S_Mouse(this);
 	m_systems[System::Planting] = new S_Planting(this);
+	m_systems[System::Renderer] = new S_Renderer(this);
 }
 SystemManager::~SystemManager() { /*PurgeSystems();*/ }
 
